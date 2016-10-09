@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+	<template id="order_acknowledge">
+	<t t-call="report.html_container">
+		<t t-foreach="docs" t-as="o">
+			<t t-call="report.external_layout">
+				<div class="page">
+					<div class="oe_structure"/>
+
+					<div class="row col-xs-12">  </div>
+
+               		<div class="row mt64 col-xs-7 "><strong>To: </strong>
+               			<div t-field="o.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+               		</div>
+
+               		<div class="row mt8 col-xs-12">  </div>
+                	
+                	<div class="col-xs-6 col-xs-offset-3">
+            			<div class="text-center" style="font-size:16pt;">
+            				<strong>
+            				<span>Order Acknowledgement</span>
+            				</strong>
+            			</div>
+            		</div>
+
+            		<div class="row col-xs-12 mt48">  </div>
+
+            		<div class="row mt48 mb32" id="informations">
+                		<div t-if="o.name" class="col-xs-3">
+                			<strong>
+                			<span>Acknowledgement No.</span>
+                			</strong>
+                			<p t-field="o.name"/>
+               			</div>
+
+                		<div class="col-xs-3">
+                    		<strong>Your Reference</strong>
+                    		<p t-field="o.client_order_ref"/>
+                		</div>
+
+                		<div t-if="o.date_order" class="col-xs-3">
+                    		<strong>Acknowledgement Date</strong>
+                    		<p t-field="o.date_order" t-field-options="{&quot;format&quot;: &quot;yyyy/MM/dd&quot;}" />
+                		</div>
+
+                		<div t-if="o.user_id.name" class="col-xs-3">
+                    		<strong>Salesperson</strong>
+                    		<p t-field="o.user_id.name"/>
+                		</div>
+            		</div>
+
+            		<div class="row col-xs-12 mt16">  </div>
+
+            		<div>
+            			<span>Your Order:</span>
+            			<p></p>            			
+            			<strong><p t-field="o.client_order_ref"/></strong>
+            			<span>has been received.</span>
+            			<p></p>
+            			<p><span>We will shortly come back to you and confirm your order with delivery time.</span></p>
+            		</div>
+		
+				</div>
+			</t>
+		</t>
+	</t>
+	</template>
+
+
+    </data>
+</openerp>
